@@ -1,23 +1,22 @@
+import { createSlice } from "@reduxjs/toolkit"
 
 
-const initialState = {
-    loggedin: false
-}
-
-const userReducer = (state = initialState, action) => {
-
-    switch(action.type) {
-
-        case 'LOGGEDIN':
-            return {...state, loggedin: true}
-
-        case 'LOGGEDOUT':
-            return {...state, loggedin: false}    
-
-         default:
-            return {...state}   
+const userSlice = createSlice({
+    name: 'user',
+    initialState : {
+        loggedin: false
+    },
+    reducers:  {
+        LOGGEDIN: (state) => {
+            state.loggedin = true
+        },
+        LOGGEDOUT: (state) => {
+            state.loggedin = false
+        }  
     }
+})    
 
-}
 
-export default userReducer
+export const { loggedin, loggedout } = userSlice.actions
+
+export default userSlice.reducer

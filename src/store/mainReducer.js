@@ -1,28 +1,26 @@
-export const INCREMENT = 'INCREMENT'
-export const DECREMENT = 'DECREMENT'
-export const SET = 'SET'
+import { createSlice } from "@reduxjs/toolkit"
 
-const initialState = {
-    counts: 5
-}
 
-const mainReducer = (state = initialState, action) => {
-
-    switch(action.type) {
-
-        case INCREMENT:
-            return {...state, counts: state.counts + 1}
-
-        case DECREMENT:
-            return {...state, counts: state.counts + 1}    
-
-        case SET:
-            return {...state, counts: action.payload}
-            
-         default:
-            return {...state}   
+// or you name is mainSlice
+const mainSlice = createSlice({
+    name: 'main',
+    initialState: {
+        counts: 5
+    },
+    reducers: {
+        increment: (state) => {
+            state.counts = state.counts + 1
+        },
+        decrement: (state) => {
+            state.counts = state.counts - 1
+        },
+        setNumber: (state, action) => {
+            state.counts = action.payload
+        }
     }
 
-}
+})
 
-export default mainReducer
+export const { increment, decrement, setNumber } = mainSlice.actions 
+
+export default mainSlice.reducer

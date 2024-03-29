@@ -1,12 +1,17 @@
-import { combineReducers, createStore, compose } from "redux";
-import mainReducer from './mainReducer'
-import userReducer from './userReducer'
+import { combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+
+
+import mainSlice from './mainReducer'
+import userSlice from './userReducer'
 
 const reducers = combineReducers({
-    main: mainReducer,
-    user: userReducer
+    main: mainSlice,
+    user: userSlice
 })
 
-const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
-
-export const store = createStore(reducers, composeEnhancers())
+// I did not include redux dev tools as its added as default in reduxjs toolkit
+export const store = configureStore({
+    reducer: reducers,
+    
+})
