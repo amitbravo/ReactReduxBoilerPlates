@@ -13,7 +13,7 @@ function Router() {
   return (
     <Provider store={store}>
       {/* step 6. #reduxPersistImplemenation , PersistGate , loading can be a loading component too, */}
-      <PersistGate loading={<div>Loading..</div>} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
         <App />
         </PersistGate>  
          
